@@ -8,7 +8,7 @@ function Header({ title, subtitle, backgroundImage }) {
   return (
     <header style={backgroundImage ? bgStyle : {}}>
       <h1 className='header-text'>{title}</h1>
-      <h2 className='header-text'>{subtitle}</h2>
+      <p className='header-text'>{subtitle}</p>
     </header>
   );
 }

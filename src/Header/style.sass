@@ -1,15 +1,30 @@
 @use '../common-styles/colors.sass' as colors
 
+@mixin header-text-positioning($x, $y)
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate($x, $y)
+
 .header
   &-text
     color: colors.$white
-
-  h1
-    font: var(--unnamed-font-style-normal) normal bold 30px/32px var(--unnamed-font-family-benton-sans)
-    color: var(--unnamed-color-ffffff)
-    text-align: left
-    font: normal normal bold 30px/32px Benton Sans
-    letter-spacing: 0.75px
-    color: colors.$white
+    font-family: Benton Sans
     text-transform: uppercase
-    opacity: 1
+
+header
+  position: relative
+  height: 24.4rem
+
+h1
+  letter-spacing: 0.075rem
+  background: colors.$dark-green 0% 0% no-repeat padding-box
+  font-size: 3rem
+  width: 20rem
+  @include header-text-positioning(-15rem, 0rem)
+
+p
+  letter-spacing: 0.038rem
+  font-size: 1.5rem
+  width: 90%
+  @include header-text-positioning(-15rem, 240%)
