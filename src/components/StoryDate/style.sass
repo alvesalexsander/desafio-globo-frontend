@@ -1,0 +1,20 @@
+@use '../../common-styles/colors.sass' as colors
+@use '../../common-styles/constants.sass' as constants
+
+#storyDate
+  display: flex
+  justify-content: center
+
+  @media screen and (min-width: 720px)
+    display: flex
+    justify-content: flex-start
+    margin-top: constants.$default-margin-y
+
+  span
+    color: colors.$light-green
+    font-size: 1rem
+    font-family: Arial
+    font-weight: bold
+
+    @media screen and (min-width: 720px)
+      color: #FFFFFF

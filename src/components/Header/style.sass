@@ -1,0 +1,32 @@
+@use '../../common-styles/colors.sass' as colors
+@use '../../common-styles/constants.sass' as constants
+
+@mixin header-text
+  color: colors.$white
+  font-family: Benton Sans
+  text-transform: uppercase
+
+header
+  position: relative
+  height: 20rem
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  padding: constants.$default-y-padding constants.$default-x-padding
+
+  & h1
+    display: inline
+    letter-spacing: 0.075rem
+    line-height: 3.2rem
+    background-color: colors.$dark-green
+    font-size: 3rem
+    width: 20rem
+    margin-bottom: constants.$default-margin-y
+    @include header-text
+
+  & p
+    bottom: 0
+    letter-spacing: 0.038rem
+    font-size: 1.5rem
+    width: 90%
+    @include header-text
