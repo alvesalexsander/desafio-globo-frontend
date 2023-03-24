@@ -7,10 +7,33 @@
   font-family: Benton Sans
 
 .player-filter
+  @media screen and (min-width: 1260px)
+    display: flex
+    justify-content: center
+    align-items: center
+
   &__dropdowns
+    @media screen and (min-width: 720px)
+      display: flex
+      justify-content: flex-start
+
+    @media screen and (min-width: 1260px)
+      justify-content: flex-start
+      align-items: center
+
     &__options
       &__container
         margin-top: 2rem
+        @media screen and (min-width: 720px)
+          width: 30rem
+
+        @media screen and (min-width: 1260px)
+          margin-top: 0
+
+        &:not(:first-of-type)
+
+        @media screen and (min-width: 720px)
+          margin-left: 3rem
 
       &__selected
         font-style: oblique
@@ -29,6 +52,8 @@
         background-color: colors.$white
         box-shadow: 0px 3px 6px #00000052
         border-radius: 0.5rem
+        @media screen and (min-width: 720px)
+          width: 30rem
 
       &__radio
         display: none
@@ -46,10 +71,20 @@
     justify-content: center
     align-items: center
 
+    @media screen and (min-width: 1260px)
+      padding-left: constants.$default-x-padding
+      height: 5rem
+      flex-direction: column
+      align-items: start
+      justify-content: space-between
+
     label
       @include textCommonStyle
       position: relative
       margin-left: 0.5rem
+
+      @media screen and (min-width: 1260px)
+        padding: 0
 
     input
       display: none
@@ -82,6 +117,8 @@
       border-radius: 3px
       cursor: pointer
       background-color: transparent
+      @media screen and (min-width: 400px)
+        width: 1.8rem
 
       &:hover
         border: 2px solid colors.$dark-green

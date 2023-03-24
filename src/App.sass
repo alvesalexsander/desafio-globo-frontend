@@ -1,7 +1,24 @@
 @use 'common-styles/fonts.sass'
 @use 'common-styles/constants.sass' as constants
+@use 'common-styles/colors.sass' as colors
 
 $padding-x: calc(constants.$default-x-padding * 2)
 
+.App
+  position: relative
+
 .content
   padding: constants.$default-y-padding $padding-x 0 $padding-x
+
+.fullscreen
+  position: absolute
+  top: 0
+  left: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100vw
+  height: 100vh
+  background-color: colors.$dark-green
+  z-index: 99
+  padding: 0 $padding-x

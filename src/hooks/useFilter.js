@@ -9,6 +9,7 @@ const POSITION_SELECTION_OPTIONS = {
   'Volante': 'Volante',
   'Meia': 'Meia',
   'Atacante': 'Atacante',
+  'Ponta': 'Ponta', // Tomei a liberdade de adicionar esta opção para dar visibilidade aos jogadores nesta posição no time
   'Treinador': 'Treinador'
 }
 
@@ -32,13 +33,31 @@ function useFilter() {
   const [scoredGoalsCheckStatus, setScoredGoalsCheckStatus] = useState(false)
   const [playedAtFinalsCheckStatus, setPlayedAtFinalsCheckStatus] = useState(false)
 
+  const injectFilterPayloadAtEvent = (ev) => {
+    ev.positionSelection = POSITION_SELECTION_OPTIONS[positionSelection]
+    ev.ageSelection = AGE_SELECTION_OPTIONS[ageSelection]
+    ev.scoredGoalsCheckStatus = scoredGoalsCheckStatus
+    ev.playedAtFinalsCheckStatus = playedAtFinalsCheckStatus
+    return ev
+  }
+
   useEffect(() => {
     setPositionSelectionOptions(getNotSelectedOptions(POSITION_SELECTION_OPTIONS, positionSelection))
+    document.dispatchEvent(injectFilterPayloadAtEvent(new Event('filterUpdate')))
   }, [positionSelection]);
 
   useEffect(() => {
     setAgeSelectionOptions(getNotSelectedOptions(AGE_SELECTION_OPTIONS, ageSelection))
+    document.dispatchEvent(injectFilterPayloadAtEvent(new Event('filterUpdate')))
   }, [ageSelection]);
+
+  useEffect(() => {
+    document.dispatchEvent(injectFilterPayloadAtEvent(new Event('filterUpdate')))
+  }, [scoredGoalsCheckStatus]);
+
+  useEffect(() => {
+    document.dispatchEvent(injectFilterPayloadAtEvent(new Event('filterUpdate')))
+  }, [playedAtFinalsCheckStatus]);
 
   return {
     positionSelection,

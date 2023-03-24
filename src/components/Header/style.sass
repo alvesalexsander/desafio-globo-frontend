@@ -15,6 +15,13 @@ header
   align-items: space-between
   padding: constants.$default-y-padding constants.$default-x-padding
 
+  @media screen and (min-width: 720px)
+    height: 50rem
+
+  @media screen and (min-width: 1260px)
+    height: 84.2rem
+    padding: constants.$default-y-padding 12rem
+
   & h1
     display: inline
     letter-spacing: 0.075rem
@@ -25,9 +32,23 @@ header
     margin-bottom: constants.$default-margin-y
     @include header-text
 
-  & p
+    @media screen and (min-width: 400px)
+      width: 34rem
+
+    @media screen and (min-width: 720px)
+      font-size: 6rem
+      width: 40rem
+      height: 13rem
+      line-height: 6.5rem
+      padding: 0 constants.$default-x-padding
+
+  & > p
     bottom: 0
     letter-spacing: 0.038rem
     font-size: 1.5rem
     width: 90%
     @include header-text
+
+    @media screen and (min-width: 720px)
+      font-size: 2rem
+      color: colors.$soft-green

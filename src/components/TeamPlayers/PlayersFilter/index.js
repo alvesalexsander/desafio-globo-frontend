@@ -46,7 +46,7 @@ function PlayersFilter() {
 
       <div id='checkboxes' className='player-filter__checkboxes'>
         <div className='player-filter__checkboxes__container' onClick={() => setScoredGoalsCheckStatus(!scoredGoalsCheckStatus)}>
-          <input type="checkbox" id="hasScored" checked={scoredGoalsCheckStatus}></input>
+          <input type="checkbox" id="hasScored" checked={scoredGoalsCheckStatus} onChange={() => true}></input>
           <div className='player-filter__checkboxes__box'>
             <div className='player-filter__checkboxes__box-mark'></div>
           </div>
@@ -54,7 +54,7 @@ function PlayersFilter() {
         </div>
 
         <div className='player-filter__checkboxes__container' onClick={() => setPlayedAtFinalsCheckStatus(!playedAtFinalsCheckStatus)}>
-          <input type="checkbox" id='playedAtFinals' checked={playedAtFinalsCheckStatus}></input>
+          <input type="checkbox" id='playedAtFinals' checked={playedAtFinalsCheckStatus} onChange={() => true}></input>
           <div className='player-filter__checkboxes__box'>
             <div className='player-filter__checkboxes__box-mark'></div>
           </div>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import MediaQuery from 'react-responsive';
 
 import './App.sass';
@@ -5,8 +6,11 @@ import { Header } from './components/Header';
 import { StoryDate } from './components/StoryDate';
 import { StoryText } from './components/StoryText';
 import { TeamPlayers } from './components/TeamPlayers';
+import { PlayerCard } from './components/TeamPlayers/PlayersShowcase/PlayerCard';
+import { useShowcase } from './hooks/useShowcase';
 
 function App() {
+  const { highlightedPlayer } = useShowcase()
 
   return (
     <div className="App">
@@ -27,6 +31,15 @@ function App() {
         </div>
       </MediaQuery>
       <TeamPlayers />
+      {highlightedPlayer ?
+        <div className='fullscreen'>
+          <PlayerCard
+            playerObject={highlightedPlayer}
+            expanded={true}
+          />
+        </div>
+        : null
+      }
     </div>
   );
 }

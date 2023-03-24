@@ -1,0 +1,154 @@
+@use '../../../../common-styles/colors.sass' as colors
+@use '../../../../common-styles/constants.sass' as constants
+
+.card
+  &__container
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: center
+    height: 10rem
+    min-width: 30rem
+    max-width: 40rem
+    border: 0.2rem solid colors.$soft-green
+    background-color: colors.$white
+    border-radius: 50px 15px 15px 50px
+
+    @media screen and (min-width: 400px)
+      min-width: 40rem
+    @media screen and (min-width: 720px)
+      min-width: 30rem
+
+    &-shrink
+      display: flex
+      align-items: center
+      justify-content: space-around
+      height: 10rem
+      width: 100%
+
+    &-expanded
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+
+      &__text
+        font-size: 1.4rem
+        font-family: Benton Sans
+        width: 23rem
+        height: 20rem
+        border: 0
+        letter-spacing: 0.057rem
+        line-height: 2rem
+        resize: none
+        outline: none
+
+        &::-webkit-scrollbar
+          width: 0.5rem
+          // border-radius: 1.5rem !important
+
+        &::-webkit-scrollbar-track
+          // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+          // border-radius: 1.5rem !important
+
+        &::-webkit-scrollbar-thumb
+          background-color: colors.$dark-green
+          // outline: 1px solid slategrey
+          border-radius: 1.5rem !important
+
+      &__nav
+        display: flex
+        justify-content: space-around
+        height: 2.8rem
+
+        &-button
+          position: relative
+          display: flex
+          justify-content: center
+          align-items: center
+          width: 10rem
+          height: 100%
+          background-color: colors.$soft-green
+          border-radius: 1.4rem
+          cursor: pointer
+
+          &:hover
+            border: 0.2rem solid colors.$dark-green
+
+          &-text
+            font-size: 1.5rem
+            font-style: oblique
+            color: colors.$dark-green
+
+          &-icon
+            position: absolute
+            width: 0.725rem
+            height: 1.45rem
+
+    &__photo
+      width: 8rem
+      height: 8rem
+      border-radius: 50%
+
+    &__data
+      display: flex
+      position: relative
+      flex-direction: column
+      width: 60%
+      height: 100%
+      // background-color: orangered
+
+      &__info
+        &-name
+          font-size: 1.6rem
+          font-family: Benton Sans
+          font-weight: bold
+          letter-spacing: 0.051rem
+          color: colors.$dark-green
+          margin-top: calc(constants.$default-y-padding/2)
+
+        &-positionAndAge
+          font-size: 1.3rem
+          font-family: Benton Sans
+
+      &__stats
+        margin-top: calc(constants.$default-y-padding/2)
+
+        &__item
+          display: flex
+          padding: 0.3rem 0
+
+          &-label
+            font-family: Benton Sans
+            font-size: 1.3rem
+            width: 3rem
+
+          &-bar
+            position: relative
+            margin-left: 1rem
+            display: flex
+            width: 2rem
+
+            &:before
+              content: ""
+              position: absolute
+              top: -0.5rem
+              left: 0
+              width: 0.2rem
+              height: 165%
+              background-color: colors.$dark-green
+
+            &__value
+              font-family: Benton Sans
+              font-weight: bold
+              font-size: 1.5rem
+              margin-left: 0.5rem
+
+    &-expander
+      position: absolute
+      bottom: calc(constants.$default-x-padding/2)
+      right: calc(constants.$default-x-padding/2)
+      width: 2rem
+      height: 2rem
+      background-color: colors.$light-green
+      border-radius: 50%
+      cursor: pointer

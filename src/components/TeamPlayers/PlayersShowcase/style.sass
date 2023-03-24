@@ -5,15 +5,100 @@ $padding-x: calc(constants.$default-x-padding * 2)
 
 #playersShowcase
   display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
   background-color: colors.$light-soft-green
-  padding: constants.$default-y-padding $padding-x constants.$default-y-padding $padding-x
+  padding: constants.$default-y-padding $padding-x
 
-.card
-  &__container
-    height: 10rem
-    width: 100%
-    border: 1px solid colors.$soft-green
-    background-color: colors.$white
+  @media screen and (min-width: 540px)
+    justify-content: space-between
 
-    &.closed
-      border-radius: 50px 15px 15px 50px
+  @media screen and (min-width: 720px)
+    flex-direction: row
+    justify-content: space-around
+    flex-wrap: wrap
+
+  & > *
+    margin-bottom: constants.$default-y-padding
+
+// .card
+//   &__container
+//     position: relative
+//     display: flex
+//     align-items: center
+//     justify-content: space-around
+//     height: 10rem
+//     width: 100%
+//     border: 0.2rem solid colors.$soft-green
+//     background-color: colors.$white
+//     border-radius: 50px 15px 15px 50px
+
+//     &__photo
+//       width: 8rem
+//       height: 8rem
+//       border-radius: 50%
+
+//     &__data
+//       display: flex
+//       position: relative
+//       flex-direction: column
+//       width: 60%
+//       height: 100%
+//       // background-color: orangered
+
+//       &__info
+//         &-name
+//           font-size: 1.6rem
+//           font-family: Benton Sans
+//           font-weight: bold
+//           letter-spacing: 0.051rem
+//           color: colors.$dark-green
+//           margin-top: calc(constants.$default-y-padding/2)
+
+//         &-positionAndAge
+//           font-size: 1.3rem
+//           font-family: Benton Sans
+
+//       &__stats
+//         margin-top: calc(constants.$default-y-padding/2)
+
+//         &__item
+//           display: flex
+//           padding: 0.3rem 0
+
+//           &-label
+//             font-family: Benton Sans
+//             font-size: 1.3rem
+//             width: 3rem
+
+//           &-bar
+//             position: relative
+//             margin-left: 1rem
+//             display: flex
+//             width: 2rem
+
+//             &:before
+//               content: ""
+//               position: absolute
+//               top: -0.5rem
+//               left: 0
+//               width: 0.2rem
+//               height: 165%
+//               background-color: colors.$dark-green
+
+//             &__value
+//               font-family: Benton Sans
+//               font-weight: bold
+//               font-size: 1.5rem
+//               margin-left: 0.5rem
+
+//     &-expander
+//       position: absolute
+//       bottom: calc(constants.$default-x-padding/2)
+//       right: calc(constants.$default-x-padding/2)
+//       width: 2rem
+//       height: 2rem
+//       background-color: colors.$light-green
+//       border-radius: 50%
+//       cursor: pointer
