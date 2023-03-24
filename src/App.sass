@@ -1,2 +1,7 @@
-
 @use 'common-styles/fonts.sass'
+@use 'common-styles/constants.sass' as constants
+
+$padding-x: calc(constants.$default-x-padding * 2)
+
+.content
+  padding: constants.$default-y-padding $padding-x 0 $padding-x

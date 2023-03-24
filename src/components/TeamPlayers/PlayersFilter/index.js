@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ageSelectionOptions, positionSelectionOptions, useFilterSelection } from '../../../hooks/usePositionSelectionFilter'
+import { useFilter } from '../../../hooks/useFilter'
 import { DropdownFilter } from './DropdownFilter'
 import './style.sass'
 
@@ -7,14 +7,25 @@ function PlayersFilter() {
   const [shouldRenderPositionSelection, setShouldRenderPositionSelection] = useState(false)
   const [shouldRenderAgeSelection, setShouldRenderAgeSelection] = useState(false)
 
-  const { positionSelection, setPositionSelection, ageSelection, setAgeSelection } = useFilterSelection()
+  const {
+    positionSelection,
+    setPositionSelection,
+    ageSelection,
+    setAgeSelection,
+    ageSelectionOptions,
+    positionSelectionOptions,
+    scoredGoalsCheckStatus,
+    setScoredGoalsCheckStatus,
+    playedAtFinalsCheckStatus,
+    setPlayedAtFinalsCheckStatus
+  } = useFilter()
 
   return (
     <div id='playersFilter' className='player-filter'>
       <div id='dropdowns' className='player-filter__dropdowns'>
 
         <DropdownFilter
-          optionsObject={positionSelectionOptions}
+          optionsArray={positionSelectionOptions}
           dropdownId='positionFilter'
           isOpened={shouldRenderPositionSelection}
           updateOpened={setShouldRenderPositionSelection}
@@ -23,7 +34,7 @@ function PlayersFilter() {
         />
 
         <DropdownFilter
-          optionsObject={ageSelectionOptions}
+          optionsArray={ageSelectionOptions}
           dropdownId='ageFilter'
           isOpened={shouldRenderAgeSelection}
           updateOpened={setShouldRenderAgeSelection}
@@ -34,17 +45,23 @@ function PlayersFilter() {
       </div>
 
       <div id='checkboxes' className='player-filter__checkboxes'>
-        <div>
-          <input type="checkbox" id="hasScored"></input>
-          <label htmlFor='hasScored'>Somente quem marcou gol</label>
+        <div className='player-filter__checkboxes__container' onClick={() => setScoredGoalsCheckStatus(!scoredGoalsCheckStatus)}>
+          <input type="checkbox" id="hasScored" checked={scoredGoalsCheckStatus}></input>
+          <div className='player-filter__checkboxes__box'>
+            <div className='player-filter__checkboxes__box-mark'></div>
+          </div>
+          <label>Somente quem marcou gol</label>
         </div>
 
-        <div>
-          <input type="checkbox" id='wasInFinals'></input>
-          <label htmlFor='wasInFinals'>Somente quem jogou na final</label>
+        <div className='player-filter__checkboxes__container' onClick={() => setPlayedAtFinalsCheckStatus(!playedAtFinalsCheckStatus)}>
+          <input type="checkbox" id='playedAtFinals' checked={playedAtFinalsCheckStatus}></input>
+          <div className='player-filter__checkboxes__box'>
+            <div className='player-filter__checkboxes__box-mark'></div>
+          </div>
+          <label>Somente quem jogou na final</label>
         </div>
       </div>
-    </div>
+    </div >
   )
 
 }

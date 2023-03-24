@@ -1,28 +1,28 @@
 @use '../../../common-styles/colors.sass' as colors
 @use '../../../common-styles/constants.sass' as constants
 
-@mixin dropdownCommonStyle
-  padding: calc(constants.$default-y-padding/2) calc(constants.$default-x-padding/2)
+@mixin textCommonStyle
+  padding: constants.$default-y-padding constants.$default-x-padding
   font-size: 1.5rem
   font-family: Benton Sans
 
 .player-filter
   &__dropdowns
-
     &__options
       &__container
-        width: 65%
+        margin-top: 2rem
 
       &__selected
         font-style: oblique
         color: colors.$dark-green
         background-color: colors.$soft-green
         border-radius: 0.5rem
-        @include dropdownCommonStyle
+        @include textCommonStyle
 
       &__items
         display: flex
         position: absolute
+        z-index: 2
         width: 65%
         flex-direction: column
         flex-wrap: wrap
@@ -36,7 +36,65 @@
       &__item
         display: block
         color: colors.$black
-        @include dropdownCommonStyle
+        @include textCommonStyle
 
         &:hover
           background-color: colors.$light-soft-green
+
+  &__checkboxes
+    display: flex
+    justify-content: center
+    align-items: center
+
+    label
+      @include textCommonStyle
+      position: relative
+      margin-left: 0.5rem
+
+    input
+      display: none
+
+      &:not(:checked)
+        appearance: none
+
+      &:checked ~ .player-filter__checkboxes__box
+        background-color: colors.$soft-green
+
+    &__container
+      display: inline-flex
+      align-items: center
+
+      &:hover .player-filter__checkboxes__box
+        border: 2px solid colors.$dark-green
+
+      &:hover input:checked ~ .player-filter__checkboxes__box
+        background-color: colors.$dark-green
+
+      &:hover .player-filter__checkboxes__box input
+        accent-color: colors.$dark-green
+
+    &__box
+      position: relative
+      z-index: 1
+      width: 2.8rem
+      height: 1.8rem
+      border: 2px solid colors.$soft-green
+      border-radius: 3px
+      cursor: pointer
+      background-color: transparent
+
+      &:hover
+        border: 2px solid colors.$dark-green
+
+      &-mark
+        // opacity: 1
+        clip-path: polygon(28% 38%, 41% 53%, 75% 24%, 86% 38%, 40% 78%, 15% 50%)
+        position: absolute
+        background-color: colors.$white
+        width: 100%
+        height: 100%
+
+        &:after
+          content: ""
+          position: absolute
+          display: none

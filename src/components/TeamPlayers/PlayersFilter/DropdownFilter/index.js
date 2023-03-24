@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const DropdownFilter = ({ dropdownId, optionsObject, isOpened, updateOpened, value, setValue }) => {
+const DropdownFilter = ({ dropdownId, optionsArray, isOpened, updateOpened, value, setValue }) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.id.includes(dropdownId)) {
@@ -25,7 +25,7 @@ const DropdownFilter = ({ dropdownId, optionsObject, isOpened, updateOpened, val
 
     {isOpened ? <div id={dropdownId} className='player-filter__dropdowns__options__items'>
       {
-        Object.keys(optionsObject)
+        optionsArray
           .map(option =>
           (<div key={option}>
 

@@ -5,8 +5,8 @@ import './style.sass'
 function TeamPlayers() {
   return (
     <div id='teamPlayers'>
-      TeamPlayers
       <PlayersFilter />
+      <div className='separator'></div>
       <PlayersShowcase />
     </div>
   )
